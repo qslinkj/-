@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เราขอท่ดดดดดด</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffd6d6, #fff3f3);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      position: relative;
+      overflow: hidden; 
+    }
+
+    .apology-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      margin: 20px auto;
+      text-align: left;
+      font-size: 18px;
+      color: #444;
+      line-height: 1.8;
+      font-style: italic;
+      position: relative;
+      z-index: 2; 
+      animation: heartbeat 2s infinite;
+    }
+
+    .apology-box img {
+      width: 10%;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+
+    .apology-box p {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.02);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    
+    .message {
+      display: none;
+      font-size: 20px;
+      color: #ff4d6d;
+      font-weight: bold;
+      margin-top: 30px;
+      animation: slideUp 2s ease-in-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    
+    .love-button {
+      background: #ff4d6d;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .love-button:hover {
+      background: #ff1e4d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/MW6E_TNgCsY?autoplay=1&loop=1&mute=1" frameborder="0" allow="autoplay"></iframe>
+
+  <div class="apology-box">
+    <img src="https://media.giphy.com/media/QlQdLBS70XJcZY1fLF/giphy.gif" alt="Apology Gif">
+    <p>เรารู้ว่าเราทำผิด และมันทำให้ความไว้ใจของแฟนหายไป </p>
+    <p>แต่เราอยากขอโอกาสอีกครั้ง และเราจะทำทุกอย่างเพื่อให้แฟนไว้ใจเราอีกครั้งนะ </p>
+    <p>เราขอโทษนะ เรารู้ว่ามันต้องใช้เวลาในการแก้ไข </p>
+    <p>แต่เราหวังว่าสิ่งนี้จะช่วยลดเวลาลงได้ เราตั้งใจมาก ๆ เลยนะ</p>
+    <p>แฟนยังโกรธเราอยู่มั้ย</p>
+    <p>เราขอบคุณแฟนมากเลยนะ และก็ขอโทษด้วยที่เดือนนี้ทำให้แฟนหนักใจบ่อย ๆ </p>
+    <p>ทั้ง ๆ ที่มันควรเป็นเดือนที่แฟนมีความสุข </p>
+    <p>เราอยากให้เดือนมีนาเป็นเดือนที่ดีของแฟนนะ </p>
+    <p>ตอนนี้ ความเชื่อใจของแฟนคงเหลือแค่ <b>20/100</b> หรืออาจน้อยกว่านั้นใช่มั้ย TT</p>
+    <p>เราจะพยายามทำให้มันกลับมาใหม่ให้ได้ ขอบคุณแฟนมากเลยนะ </p>
+  </div>
+
+  
+  <div class="message" id="message">
+    เราขอให้เดือนมีนาเป็นเดือนที่แฟนมีความสุขในทุกๆ เรื่องนะ
+  </div>
+
+  
+  <button class="love-button" id="loveButton" onclick="showMessage()">เราร้ากเเฟนนะ</button>
+
+  <div id="stars"></div>
+
+  <script>
+    
+    function createStars() {
+      setInterval(function () {
+        var star = document.createElement("div");
+        star.classList.add("star");
+        var positionX = Math.random() * window.innerWidth;
+        var positionY = Math.random() * window.innerHeight;
+        var size = Math.random() * 2 + 1; 
+        star.style.left = positionX + "px";
+        star.style.top = positionY + "px";
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        document.getElementById("stars").appendChild(star);
+        setTimeout(function () {
+          star.remove();
+        }, 1500); 
+      }, 100); 
+    }
+
+    
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("loveButton").style.display = "none"; 
+    }
+
+    
+    createStars();
+  </script>
+</body>
+
+</html>
